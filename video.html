@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video.js Responsive Player</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.20.1/video-js.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.20.1/video.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <style>
+    .video-container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 비율 */
+    }
+
+    .video-wrapper .video-js {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .video-js .vjs-big-play-button {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <div class="video-wrapper">
+      <video id="my_video" class="video-js" controls preload="auto"
+        data-setup='{"playbackRates": [1, 1.25, 1.5, 1.75, 2]}'>
+        <source src="https://joymedia.joyful-c.or.kr/joymedia/rhema/2025/amlst:20250810_preaching_high/playlist.m3u8" type="application/x-mpegURL">
+      </video>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const player = videojs('my_video', {
+        playbackRates: [1, 1.25, 1.5, 1.75, 2],
+      });
+      player.play();
+    });
+  </script>
+</body>
+</html>
